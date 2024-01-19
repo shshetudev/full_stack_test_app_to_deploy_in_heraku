@@ -10,16 +10,16 @@ app.use(express.json());
 
 let counter = 0;
 
-app.get('/api/counter', (req, res) => {
+app.get('/', (req, res) => {
   res.json({ counter });
 });
 
-app.post('/api/increment', (req, res) => {
+app.post('/increment', (req, res) => {
   counter++;
   res.json({ counter });
 });
 
-app.post('/api/decrement', (req, res) => {
+app.post('/decrement', (req, res) => {
   counter--;
   res.json({ counter });
 });
