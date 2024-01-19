@@ -9,15 +9,18 @@ app.use(cors());
 app.use(express.json());
 
 let counter = 0;
+let lastRequestBody;
 
 app.get('/', (req, res) => {
-  console.log(req)
   counter++;
+  lastRequestBody = req.body;
+  console.log(lastRequestBody);
   res.json({ counter });
 });
 
 app.post('/status', (req, res) => {
-  res.json({ counter });
+  console.log(lastRequestBody);
+  res.json({ counter, lastRequestBody});
 });
 
 app.post('/increment', (req, res) => {
