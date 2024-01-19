@@ -18,7 +18,7 @@ app.post('/', (req, res) => {
   res.json({ counter });
 });
 
-app.post('/status', (req, res) => {
+app.get('/status', (req, res) => {
   console.log(lastRequestBody);
   res.json({ counter, lastRequestBody});
 });
