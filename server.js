@@ -11,6 +11,12 @@ app.use(express.json());
 let counter = 0;
 
 app.get('/', (req, res) => {
+  console.log(req)
+  counter++;
+  res.json({ counter });
+});
+
+app.post('/status', (req, res) => {
   res.json({ counter });
 });
 
