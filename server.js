@@ -11,7 +11,7 @@ app.use(express.json());
 let counter = 0;
 let lastRequestBody;
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
   counter++;
   lastRequestBody = req.body;
   console.log(lastRequestBody);
