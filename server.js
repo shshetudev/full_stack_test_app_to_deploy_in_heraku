@@ -18,6 +18,13 @@ app.post('/', (req, res) => {
   res.json({ counter });
 });
 
+app.post('/success', (req, res) => {
+  counter++;
+  lastRequestBody = req.body;
+  console.log(lastRequestBody);
+  res.json({ counter, lastRequestBody});
+});
+
 app.get('/status', (req, res) => {
   console.log(lastRequestBody);
   res.json({ counter, lastRequestBody});
