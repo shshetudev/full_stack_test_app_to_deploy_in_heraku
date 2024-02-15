@@ -10,6 +10,7 @@ app.use(express.json());
 
 let counter = 0;
 let lastRequestBody;
+let lastSuccessBody;
 
 app.post('/', (req, res) => {
   counter++;
@@ -21,8 +22,14 @@ app.post('/', (req, res) => {
 app.post('/success', (req, res) => {
   counter++;
   lastRequestBody = req.body;
+  lastSuccessBody = req.body;
   console.log(lastRequestBody);
   res.json({ counter, lastRequestBody});
+});
+
+app.get('/last-success-body', (req, res) => {
+  console.log(lastRequestBody);
+  res.json({ counter, lastSuccessBody});
 });
 
 app.get('/status', (req, res) => {
