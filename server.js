@@ -10,6 +10,8 @@ app.use(express.json());
 
 let counter = 0;
 let lastRequestBody;
+let successHeaders = "";
+let successReqParams = "";
 let lastSuccessBody = "{'id': 0, 'message': 'failed'}";
 
 app.post('/', (req, res) => {
@@ -19,12 +21,22 @@ app.post('/', (req, res) => {
   res.json({ counter });
 });
 
-app.post('/success', (req, res) => {
+app.get('/success', (req, res) => {
   counter++;
-  lastRequestBody = req.body;
+  successHeaders = req.headers;
+  successReqParams = req.params;
   lastSuccessBody = req.body;
-  console.log(lastRequestBody);
-  res.json({ counter, lastRequestBody});
+  
+  console.log(`Request Headers:`);
+  console.log(successHeaders);
+
+  console.log(`Request Params:`);
+  console.log(successReqParams);
+
+  console.log(`Request Body:`);
+  console.log(lastSuccessBody);
+
+  res.json({ counter, lastSuccessBody});
 });
 
 app.get('/last-success-body', (req, res) => {
