@@ -36,7 +36,7 @@ app.get('/success', (req, res) => {
   console.log(`Request Body:`);
   console.log(lastSuccessBody);
 
-  res.json({ counter, lastSuccessBody});
+  res.json({ counter, successHeaders, successReqParams, lastSuccessBody,});
 });
 
 app.get('/last-success-body', (req, res) => {
