@@ -28,7 +28,7 @@ app.post('/', (req, res) => {
 
   console.log(`Request Body:`);
   console.log(lastSuccessBody);
-  
+
   res.json({ counter, successHeaders, successReqParams, lastSuccessBody,});
 });
 
@@ -53,6 +53,10 @@ app.get('/success', (req, res) => {
 app.get('/last-success-body', (req, res) => {
   console.log(lastSuccessBody);
   res.json({ counter, lastSuccessBody});
+});
+
+app.get('/last-req', (req, res) => {
+  res.json({ req});
 });
 
 app.get('/last-success-header-body-params', (req, res) => {
