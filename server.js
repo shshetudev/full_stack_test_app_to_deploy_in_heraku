@@ -59,7 +59,8 @@ app.get('/last-success-body', (req, res) => {
 });
 
 app.get('/last-req', (req, res) => {
-  res.json({ lastRequest});
+  console.log(lastRequest);
+  res.json({ "request": "printed"});
 });
 
 app.get('/last-success-header-body-params', (req, res) => {
