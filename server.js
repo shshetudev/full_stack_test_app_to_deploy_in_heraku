@@ -10,6 +10,7 @@ app.use(express.json());
 
 let counter = 0;
 let lastRequestBody;
+let lastRequest;
 let successHeaders = "";
 let successReqParams = "";
 let lastSuccessBody = "{'id': 0, 'message': 'failed'}";
@@ -19,6 +20,7 @@ app.post('/', (req, res) => {
   successHeaders = req.headers;
   successReqParams = req.params;
   lastSuccessBody = req.body;
+  lastRequest = req;
   
   console.log(`Request Headers:`);
   console.log(successHeaders);
@@ -37,6 +39,7 @@ app.get('/success', (req, res) => {
   successHeaders = req.headers;
   successReqParams = req.params;
   lastSuccessBody = req.body;
+  lastRequest = req;
   
   console.log(`Request Headers:`);
   console.log(successHeaders);
@@ -56,7 +59,7 @@ app.get('/last-success-body', (req, res) => {
 });
 
 app.get('/last-req', (req, res) => {
-  res.json({ req});
+  res.json({ lastRequest});
 });
 
 app.get('/last-success-header-body-params', (req, res) => {
