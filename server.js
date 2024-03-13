@@ -16,9 +16,20 @@ let lastSuccessBody = "{'id': 0, 'message': 'failed'}";
 
 app.post('/', (req, res) => {
   counter++;
-  lastRequestBody = req.body;
-  console.log(lastRequestBody);
-  res.json({ counter });
+  successHeaders = req.headers;
+  successReqParams = req.params;
+  lastSuccessBody = req.body;
+  
+  console.log(`Request Headers:`);
+  console.log(successHeaders);
+
+  console.log(`Request Params:`);
+  console.log(successReqParams);
+
+  console.log(`Request Body:`);
+  console.log(lastSuccessBody);
+  
+  res.json({ counter, successHeaders, successReqParams, lastSuccessBody,});
 });
 
 app.get('/success', (req, res) => {
