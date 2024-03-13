@@ -44,6 +44,19 @@ app.get('/last-success-body', (req, res) => {
   res.json({ counter, lastSuccessBody});
 });
 
+app.get('/last-success-header-body-params', (req, res) => {
+  console.log(`Request Headers:`);
+  console.log(successHeaders);
+
+  console.log(`Request Params:`);
+  console.log(successReqParams);
+
+  console.log(`Request Body:`);
+  console.log(lastSuccessBody);
+
+  res.json({ counter, successHeaders, successReqParams, lastSuccessBody,});
+});
+
 app.get('/status', (req, res) => {
   console.log(lastRequestBody);
   res.json({ counter, lastRequestBody});
